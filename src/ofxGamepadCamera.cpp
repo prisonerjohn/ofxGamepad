@@ -54,7 +54,7 @@ void ofxGamepadCamera::update(ofEventArgs& e) {
 	lastTime = curTime;
 }
 
-void ofxGamepadCamera::setGamepad(ofxGamepad* p) {
+void ofxGamepadCamera::setGamepad(std::shared_ptr<ofxGamepad> p) {
 	pad = p;
 }
 

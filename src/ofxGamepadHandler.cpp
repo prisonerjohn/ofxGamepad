@@ -125,7 +125,7 @@ void ofxGamepadHandler::updatePadList() {
 		file.open("/dev/input/js"+ofToString(i));
 		if(file.exists() && find(activeIDs.begin(), activeIDs.end(), i) == activeIDs.end()) {
 			try {
-				gamepadsNew.push_back(ofPtr<ofxGamepad>(new ofxGamepadLinux(file.getAbsolutePath())));
+				gamepadsNew.push_back(std::make_shared<ofxGamepadLinux>(file.getAbsolutePath()));
 				activeIDs.push_back(i);
 			} catch(std::exception& err) {
 				ofLog(OF_LOG_ERROR, "could not create new gamepad");
@@ -174,11 +174,14 @@ void ofxGamepadHandler::exit(ofEventArgs& arg) {
 	}
 }
 
-ofxGamepad* ofxGamepadHandler::getGamepad(int num) {
-	if(getNumPads()>num)
-		return gamepads[num].get();
-	ofLogWarning(__FUNCTION__) << "No gamepad connected! Gamepad is null.";
-	return NULL;
+std::shared_ptr<ofxGamepad> ofxGamepadHandler::getGamepad(int num)
+{
+	if (getNumPads() > num)
+	{
+		return gamepads[num];
+	}
+	ofLogWarning(__FUNCTION__) << "No gamepad at index " << num;
+	return nullptr;
 }
 
 int ofxGamepadHandler::getNumPads() {

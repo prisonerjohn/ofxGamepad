@@ -15,9 +15,9 @@
 #ifdef USE_OIS
 #include "OIS.h"
 #include "ofxGamepadOIS.h"
-typedef std::vector< ofPtr<ofxGamepadOIS> > gamepadList;
+typedef std::vector<std::shared_ptr<ofxGamepadOIS>> gamepadList;
 #else
-typedef std::vector< ofPtr<ofxGamepad> > gamepadList;
+typedef std::vector<std::shared_ptr<ofxGamepad>> gamepadList;
 #endif;
 
 
@@ -28,7 +28,7 @@ public:
 	static ofxGamepadHandler& get();
 
 	int getNumPads();
-	ofxGamepad* getGamepad(int num);
+	std::shared_ptr<ofxGamepad> getGamepad(int num);
 
 	void updatePadList();
 	void update(ofEventArgs &arg);

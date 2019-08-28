@@ -9,7 +9,7 @@ public:
 	ofxGamepadCamera();
 	~ofxGamepadCamera();
 	void setup();
-	void setGamepad(ofxGamepad* pad);
+	void setGamepad(std::shared_ptr<ofxGamepad> pad);
 	void setInitialPosition(float x, float y, float z);
 	void setInitialPosition(ofVec3f pos);
 	void reset();
@@ -20,7 +20,7 @@ public:
 private:
 	void update(ofEventArgs& e);
 	float lastTime;
-	ofxGamepad* pad;
+	std::shared_ptr<ofxGamepad> pad;
 	ofVec3f initialPosition;
 };
 
