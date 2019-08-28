@@ -14,10 +14,6 @@ public:
 };
 #endif
 
-#if defined OIS_WIN32_PLATFORM
-HWND hWnd = 0;
-#endif
-
 ofxGamepadHandler* ofxGamepadHandler::singleton;
 bool ofxGamepadHandler::hasSingleton = false;
 
@@ -72,13 +68,14 @@ void ofxGamepadHandler::updatePadList() {
 		
 		ParamList pl;
 #if defined OIS_WIN32_PLATFORM
-		if(hWnd == 0)
+		// On Windows, a handle to the window needs to be passed to the input manager / OIS
+		if (hWnd == 0)
 		{
-			HWND windowHandle = FindWindow(NULL, L"gamepadExampleApp");
-			std::ostringstream wnd;		
+			HWND windowHandle = ofGetWin32Window();
+			std::ostringstream wnd;
 			wnd << (size_t)windowHandle;
-						
-			pl.insert(std::make_pair( std::string("WINDOW"), wnd.str() ));
+
+			pl.insert(std::make_pair(std::string("WINDOW"), wnd.str()));
 		}
 #endif
 		InputManager* inputManager=InputManager::createInputSystem(pl);

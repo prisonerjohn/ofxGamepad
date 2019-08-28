@@ -56,6 +56,10 @@ private:
 	int hotplugInterval;
 
 	std::vector<int> activeIDs;
+
+#if defined OIS_WIN32_PLATFORM
+	HWND hWnd = 0;
+#endif
 };
 
 #endif // OFXGAMEPADHANDLER_H
