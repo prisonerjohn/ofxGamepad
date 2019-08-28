@@ -13,6 +13,7 @@ public:
 	void axisChanged(ofxGamepadAxisEvent &e);
 	void buttonPressed(ofxGamepadButtonEvent &e);
 	void buttonReleased(ofxGamepadButtonEvent &e);
+	void povChanged(ofxGamepadPovEvent &e);
 
 	void keyPressed(int key);
 	void keyReleased(int key);

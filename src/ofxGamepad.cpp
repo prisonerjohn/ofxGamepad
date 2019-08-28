@@ -32,6 +32,7 @@ void ofxGamepad::buttonChanged(int button, bool value)
 
 void ofxGamepad::povChanged(int pov, int value)
 {
+	povValues[pov] = value;
 	static ofxGamepadPovEvent evt;
 	evt.gamepad=this;
 	evt.pov = pov;	
@@ -162,7 +163,23 @@ void ofxGamepad::draw(int x, int y)
 		if(btnSize.y>highestY)
 			highestY=axisSize.y;
 	}
-	curX+=btnSize.width;
+	
+	curX+=btnSize.width+margin;
+	ofRectangle povSize(curX, 0, 85, 17);
+	for (int i = 0; i < getNumPovs(); i++) {
+		if (getPovValue(i) > 0)
+			ofSetColor(255);
+		else
+			ofSetColor(70);
+		ofDrawRectangle(povSize);
+		povSize.y += povSize.height + margin;
+		ofSetColor(20);
+		ofDrawBitmapString(ofToString(i) +":" + ofToString(getPovValue(i)), povSize.x, povSize.y - 4);
+		if (povSize.y > highestY)
+			highestY = axisSize.y;
+	}
+
+	curX += povSize.width;
 
 	ofPopMatrix();
 

@@ -8,14 +8,17 @@ void ofApp::setup(){
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 
-	ofxGamepadHandler::get()->enableHotplug();
+	auto handler = ofxGamepadHandler::get();
+	handler->enableHotplug();
 	
-	//CHECK IF THERE EVEN IS A GAMEPAD CONNECTED
-	if(ofxGamepadHandler::get()->getNumPads()>0){
-			ofxGamepad* pad = ofxGamepadHandler::get()->getGamepad(0);
-			ofAddListener(pad->onAxisChanged, this, &ofApp::axisChanged);
-			ofAddListener(pad->onButtonPressed, this, &ofApp::buttonPressed);
-			ofAddListener(pad->onButtonReleased, this, &ofApp::buttonReleased);
+	// Add event listeners if a gamepad is connected.
+	if (handler->getNumPads() > 0)
+	{
+		auto gamepad = handler->getGamepad(0);
+		ofAddListener(gamepad->onAxisChanged, this, &ofApp::axisChanged);
+		ofAddListener(gamepad->onButtonPressed, this, &ofApp::buttonPressed);
+		ofAddListener(gamepad->onButtonReleased, this, &ofApp::buttonReleased);
+		ofAddListener(gamepad->onPovChanged, this, &ofApp::povChanged);
 	}
 }
 
@@ -43,6 +46,11 @@ void ofApp::buttonPressed(ofxGamepadButtonEvent& e)
 void ofApp::buttonReleased(ofxGamepadButtonEvent& e)
 {
 	ofLogNotice(__FUNCTION__) << "Button " << e.button << " Released";
+}
+
+void ofApp::povChanged(ofxGamepadPovEvent& e)
+{
+	ofLogNotice(__FUNCTION__) << "POV " << e.pov << " Value " << ofToString(e.value);
 }
 
 //--------------------------------------------------------------
