@@ -122,9 +122,7 @@ void ofxGamepadHandler::updatePadList() {
 
 		oisInputManager = inputManager;
 	} catch(OIS::Exception &ex) {
-		stringstream msg;
-		msg << "\nException raised on joystick creation: " << ex.eText << std::endl;
-		ofLog(OF_LOG_ERROR, msg.str());
+		ofLogError(__FUNCTION__) << "Exception raised on joystick creation: " << ex.eText;
 	}
 #elif defined(TARGET_LINUX)
 	//check for joysticks
@@ -141,7 +139,7 @@ void ofxGamepadHandler::updatePadList() {
 		}
 	}
 #else
-	ofLog(OF_LOG_ERROR, "ofxGamepad says: sorry, looks like your system is not supported...");
+	ofLogError(__FUNCTION__) << "Sorry, looks like your system is not supported...";
 #endif
 }
 
@@ -186,7 +184,7 @@ void ofxGamepadHandler::exit(ofEventArgs& arg) {
 ofxGamepad* ofxGamepadHandler::getGamepad(int num) {
 	if(getNumPads()>0)
 		return gamepads[num].get();
-	ofLog(OF_LOG_WARNING, "ofxGamepad::getGamepad(): WARNING NO GAMEPAD CONNECTED. GAMEPAD IS NULL.");
+	ofLogWarning(__FUNCTION__) << "No gamepad connected! Gamepad is null.";
 	return NULL;
 }
 

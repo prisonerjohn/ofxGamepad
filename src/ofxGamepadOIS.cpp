@@ -21,7 +21,7 @@ ofxGamepadOIS::ofxGamepadOIS(OIS::JoyStick* js){
 	msg += ": "+ofToString(getNumAxis())+" axis";
 	msg += ", "+ofToString(getNumButtons())+" buttons";
 	msg += ", "+ofToString(getNumPovs())+" povs";
-	ofLog(OF_LOG_NOTICE, msg);
+	ofLogNotice(__FUNCTION__) << msg;
 };
 
 ofxGamepadOIS::~ofxGamepadOIS(){
@@ -38,37 +38,32 @@ void ofxGamepadOIS::updateJoystick(OIS::JoyStick* js){
 	joystick->setEventCallback(this);
 	id=joystick->getID();
 	
-	forceFeedback = (OIS::ForceFeedback*)joystick->queryInterface( OIS::Interface::ForceFeedback );
-	if( forceFeedback )
+	forceFeedback = (OIS::ForceFeedback*)joystick->queryInterface(OIS::Interface::ForceFeedback);
+	if (forceFeedback)
 	{
 		bFFFound = true;
-		
+
 		//cout << endl << " * Number of force feedback axes : " << forceFeedback->getFFAxesNumber() << endl;
 		const OIS::ForceFeedback::SupportedEffectList &lstFFEffects = forceFeedback->getSupportedEffects();
 		if (lstFFEffects.size() > 0)
 		{
-			stringstream msg; 
-			msg << " * Supported effects :" << std::endl;
-			ofLog(OF_LOG_VERBOSE, msg.str());
-			
+			ofLogVerbose(__FUNCTION__) << " * Supported effects :";
+
 			OIS::ForceFeedback::SupportedEffectList::const_iterator itFFEff;
-			for(itFFEff = lstFFEffects.begin(); itFFEff != lstFFEffects.end(); ++itFFEff)
+			for (itFFEff = lstFFEffects.begin(); itFFEff != lstFFEffects.end(); ++itFFEff)
 			{
-				stringstream msg; 
-				msg << OIS::Effect::getEffectTypeName(itFFEff->second) << std::endl;
-				ofLog(OF_LOG_VERBOSE, msg.str());
+				ofLogVerbose(__FUNCTION__) << OIS::Effect::getEffectTypeName(itFFEff->second);
 			}
 		}
-		else{
-			stringstream msg; 
-			msg << "No supported effect found!" << std::endl;
-			ofLog(OF_LOG_WARNING, msg.str());
+		else
+		{
+			ofLogWarning(__FUNCTION__) << "No supported effect found!";
 		}
-	}else{
-		stringstream msg; 
-		msg << "No force feedback support detected!" << std::endl;
-		ofLog(OF_LOG_NOTICE, msg.str());
-		
+	}
+	else
+	{
+		ofLogNotice(__FUNCTION__) << "No force feedback support detected!";
+
 		bFFFound = false;
 	}
 }
