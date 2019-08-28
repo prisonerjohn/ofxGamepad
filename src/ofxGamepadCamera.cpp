@@ -8,8 +8,8 @@ ofxGamepadCamera::~ofxGamepadCamera() {
 
 void ofxGamepadCamera::setup() {
 	//CHECK IF THERE IS A GAMEPAD CONNECTED
-	if(ofxGamepadHandler::get()->getNumPads()>0) {
-		setGamepad(ofxGamepadHandler::get()->getGamepad(0));
+	if(ofxGamepadHandler::get().getNumPads()>0) {
+		setGamepad(ofxGamepadHandler::get().getGamepad(0));
 	} else
 		ofLogWarning("no gamepad connected in ofxGamepadCAmera::setup");
 
@@ -54,7 +54,7 @@ void ofxGamepadCamera::update(ofEventArgs& e) {
 	lastTime = curTime;
 }
 
-void ofxGamepadCamera::setGamepad(ofxGamepad* p) {
+void ofxGamepadCamera::setGamepad(std::shared_ptr<ofxGamepad> p) {
 	pad = p;
 }
 
