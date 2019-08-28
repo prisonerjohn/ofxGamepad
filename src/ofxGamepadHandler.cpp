@@ -14,9 +14,6 @@ public:
 };
 #endif
 
-ofxGamepadHandler* ofxGamepadHandler::singleton;
-bool ofxGamepadHandler::hasSingleton = false;
-
 ofxGamepadHandler::ofxGamepadHandler():hasHotplug(false),hotplugNext(0) {
 	ofAddListener(ofEvents().update, this, &ofxGamepadHandler::update);
 	ofAddListener(ofEvents().exit, this, &ofxGamepadHandler::exit);
@@ -28,11 +25,8 @@ ofxGamepadHandler::ofxGamepadHandler():hasHotplug(false),hotplugNext(0) {
 ofxGamepadHandler::~ofxGamepadHandler() {
 }
 
-ofxGamepadHandler* ofxGamepadHandler::get() {
-	if(!hasSingleton) {
-		singleton=new ofxGamepadHandler();
-		hasSingleton=true;
-	}
+ofxGamepadHandler& ofxGamepadHandler::get() {
+	static ofxGamepadHandler singleton;
 	return singleton;
 }
 
@@ -178,7 +172,6 @@ void ofxGamepadHandler::exit(ofEventArgs& arg) {
 		(*it)->exit();
 		++it;
 	}
-	delete this;
 }
 
 ofxGamepad* ofxGamepadHandler::getGamepad(int num) {

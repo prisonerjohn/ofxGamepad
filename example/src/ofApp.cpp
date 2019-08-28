@@ -8,13 +8,12 @@ void ofApp::setup(){
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 
-	auto handler = ofxGamepadHandler::get();
-	handler->enableHotplug();
+	ofxGamepadHandler::get().enableHotplug();
 	
 	// Add event listeners if a gamepad is connected.
-	if (handler->getNumPads() > 0)
+	if (ofxGamepadHandler::get().getNumPads() > 0)
 	{
-		auto gamepad = handler->getGamepad(0);
+		auto gamepad = ofxGamepadHandler::get().getGamepad(0);
 		ofAddListener(gamepad->onAxisChanged, this, &ofApp::axisChanged);
 		ofAddListener(gamepad->onButtonPressed, this, &ofApp::buttonPressed);
 		ofAddListener(gamepad->onButtonReleased, this, &ofApp::buttonReleased);
@@ -28,7 +27,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofxGamepadHandler::get()->draw(10,10);
+	ofxGamepadHandler::get().draw(10,10);
 }
 
 //--------------------------------------------------------------

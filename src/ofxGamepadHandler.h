@@ -25,7 +25,7 @@ class ofxGamepadHandler: public ofThread {
 
 public:
 	~ofxGamepadHandler();
-	static ofxGamepadHandler* get();
+	static ofxGamepadHandler& get();
 
 	int getNumPads();
 	ofxGamepad* getGamepad(int num);
@@ -47,9 +47,6 @@ private:
 
 	gamepadList gamepads;
 	gamepadList gamepadsNew;
-
-	static ofxGamepadHandler* singleton;
-	static bool hasSingleton;
 	
 	bool hasHotplug;
 	int hotplugNext;
