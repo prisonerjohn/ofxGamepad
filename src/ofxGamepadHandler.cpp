@@ -79,32 +79,41 @@ void ofxGamepadHandler::updatePadList() {
 		//gamepads.clear();
 
 		int numPads = inputManager->getNumberOfDevices(OISJoyStick);
-		for( int i = 0; i < numPads; i++ ) {
-			JoyStick* js = (JoyStick*)inputManager->createInputObject(OISJoyStick, true );
+		for (int i = 0; i < numPads; i++)
+		{
+			JoyStick* js = (JoyStick*)inputManager->createInputObject(OISJoyStick, true);
 			sticks.push_back(tempPad(js));
 		}
 
-		std::vector<tempPad>::iterator sIt = sticks.begin();
-		while(sIt!=sticks.end()) {
-			gamepadList::iterator gIt = padsOld.begin();
-			while(gIt!=padsOld.end()) {
-				if((*sIt).stick->vendor() == (*gIt)->name) {
-					ofPtr<ofxGamepadOIS> p = *gIt;
-					p->updateJoystick((*sIt).stick);
+		auto sIt = sticks.begin();
+		while (sIt != sticks.end()) 
+		{
+			auto& s = *sIt;
+			auto pIt = padsOld.begin();
+			while (pIt != padsOld.end())
+			{
+				auto p = *pIt;
+				if (s.stick->vendor() == p->name) 
+				{
+					p->updateJoystick(s.stick);
 					gamepadsNew.push_back(p);
-					padsOld.erase(gIt);
-					(*sIt).handled = true;
+					padsOld.erase(pIt);
+					s.handled = true;
 					break;
 				}
-				++gIt;
+				++pIt;
 			}
 			++sIt;
 		}
 
 		sIt = sticks.begin();
-		while(sIt!=sticks.end()) {
-			if(!(*sIt).handled)
-				gamepadsNew.push_back(ofPtr<ofxGamepadOIS>(new ofxGamepadOIS((*sIt).stick)));
+		while(sIt!=sticks.end()) 
+		{
+			auto& s = *sIt;
+			if (!s.handled)
+			{
+				gamepadsNew.push_back(std::make_shared<ofxGamepadOIS>(s.stick));
+			}
 			++sIt;
 		}
 
@@ -143,10 +152,9 @@ void ofxGamepadHandler::update(ofEventArgs &args) {
 
 void ofxGamepadHandler::update() {
 	lock();
-	gamepadList::iterator it=gamepads.begin();
-	while(it!=gamepads.end()) {
-		(*it)->update();
-		++it;
+	for (auto pad : gamepads)
+	{
+		pad->update();
 	}
 	unlock();
 }
@@ -156,21 +164,21 @@ void ofxGamepadHandler::draw(int x, int y) {
 	ofTranslate(x, y);
 	ofPoint offset(x, y);
 
-	gamepadList::iterator it=gamepads.begin();
-	while(it!=gamepads.end()) {
-		(*it)->draw(offset.x, offset.y);
-		offset+=ofPoint((*it)->drawSize.x+20, 0);
-		++it;
+		for (auto pad : gamepads)
+		{
+			pad->draw(offset.x, offset.y);
+			offset.x += pad->drawSize.x + 20.0f;
+		}
 	}
 
 	ofPopMatrix();
 }
 
-void ofxGamepadHandler::exit(ofEventArgs& arg) {
-	gamepadList::iterator it=gamepads.begin();
-	while(it!=gamepads.end()) {
-		(*it)->exit();
-		++it;
+void ofxGamepadHandler::exit(ofEventArgs& arg)
+{
+	for (auto pad : gamepads)
+	{
+		pad->exit();
 	}
 }
 
