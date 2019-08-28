@@ -30,6 +30,15 @@ void ofxGamepad::buttonChanged(int button, bool value)
 	value?buttonPressed(button):buttonReleased(button);
 }
 
+void ofxGamepad::povChanged(int pov, int value)
+{
+	static ofxGamepadPovEvent evt;
+	evt.gamepad=this;
+	evt.pov = pov;	
+	evt.value=value;
+	ofNotifyEvent(onPovChanged, evt);
+}
+
 void ofxGamepad::buttonPressed(int button)
 {
 	static ofxGamepadButtonEvent evt;
@@ -63,6 +72,11 @@ float ofxGamepad::getAxisValueU(int axis)
 	return (axisValues[axis]+1)*.5;
 }
 
+int ofxGamepad::getPovValue(int pov)
+{
+	return povValues[pov];
+}
+
 int ofxGamepad::getNumAxis()
 {
 	return numAxis;
@@ -71,6 +85,11 @@ int ofxGamepad::getNumAxis()
 int ofxGamepad::getNumButtons()
 {
 	return numButtons;
+}
+
+int ofxGamepad::getNumPovs()
+{
+	return numPovs;
 }
 
 void ofxGamepad::setNumAxis(int amt)
@@ -91,10 +110,19 @@ void ofxGamepad::setNumButtons(int amt)
 	}
 }
 
+void ofxGamepad::setNumPovs(int amt)
+{
+	numPovs = amt;
+	povValues.resize(numPovs);
+	for(int i=0;i<povValues.size();i++){
+		povValues[i] = 0;
+	}
+}
+
 void ofxGamepad::draw(int x, int y)
 {
 	int curX=0;
-	int highestY;
+	int highestY=0;
 
 	ofPushMatrix();
 	ofTranslate(x, y);

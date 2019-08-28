@@ -20,6 +20,7 @@ ofxGamepadOIS::ofxGamepadOIS(OIS::JoyStick* js){
 	string msg=name;
 	msg += ": "+ofToString(getNumAxis())+" axis";
 	msg += ", "+ofToString(getNumButtons())+" buttons";
+	msg += ", "+ofToString(getNumPovs())+" povs";
 	ofLog(OF_LOG_NOTICE, msg);
 };
 
@@ -32,6 +33,7 @@ void ofxGamepadOIS::updateJoystick(OIS::JoyStick* js){
 	joystick = js;
 	setNumAxis(joystick->getNumberOfComponents(OIS_Axis));
 	setNumButtons(joystick->getNumberOfComponents(OIS_Button));
+	setNumPovs(joystick->getNumberOfComponents(OIS_POV));
 	setName(joystick->vendor());
 	joystick->setEventCallback(this);
 	id=joystick->getID();
@@ -90,6 +92,7 @@ bool ofxGamepadOIS::axisMoved( const OIS::JoyStickEvent &arg, int axis ){
 	return true;
 };
 bool ofxGamepadOIS::povMoved( const OIS::JoyStickEvent &arg, int pov ){
+	povChanged(pov, arg.state.mPOV[pov].direction);
 	return true;
 };
 bool ofxGamepadOIS::vector3Moved( const OIS::JoyStickEvent &arg, int index){

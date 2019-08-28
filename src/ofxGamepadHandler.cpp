@@ -14,6 +14,10 @@ public:
 };
 #endif
 
+#if defined OIS_WIN32_PLATFORM
+HWND hWnd = 0;
+#endif
+
 ofxGamepadHandler* ofxGamepadHandler::singleton;
 bool ofxGamepadHandler::hasSingleton = false;
 
@@ -39,7 +43,7 @@ ofxGamepadHandler* ofxGamepadHandler::get() {
 void ofxGamepadHandler::enableHotplug(int interval) {
 	hasHotplug=true;
 	hotplugInterval=interval;
-	startThread(true, false);
+	startThread(true);
 }
 
 void ofxGamepadHandler::threadedFunction() {
@@ -67,6 +71,16 @@ void ofxGamepadHandler::updatePadList() {
 	try {
 		
 		ParamList pl;
+#if defined OIS_WIN32_PLATFORM
+		if(hWnd == 0)
+		{
+			HWND windowHandle = FindWindow(NULL, L"gamepadExampleApp");
+			std::ostringstream wnd;		
+			wnd << (size_t)windowHandle;
+						
+			pl.insert(std::make_pair( std::string("WINDOW"), wnd.str() ));
+		}
+#endif
 		InputManager* inputManager=InputManager::createInputSystem(pl);
 
 		gamepadList padsOld=gamepads;

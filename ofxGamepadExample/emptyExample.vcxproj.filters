@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxGamepad\src\ofxGamepad.cpp">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGamepad\src\ofxGamepadCamera.cpp">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGamepad\src\ofxGamepadHandler.cpp">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGamepad\src\ofxGamepadLinux.cpp">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGamepad\src\ofxGamepadOIS.cpp">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gamepadExampleApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{57fbb449-508e-4330-8771-091202d4d152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGamepad">
+      <UniqueIdentifier>{ed3ab4b4-0fa0-4498-bd90-f7d4580d4be2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGamepad\src">
+      <UniqueIdentifier>{9eab1341-fe73-45e2-aa7b-0184b77d38e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGamepad\libs">
+      <UniqueIdentifier>{16e567e2-28a9-4bb5-a702-7af49d75ca3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGamepad\libs\wgois">
+      <UniqueIdentifier>{dbdec8e3-189a-4e65-8050-bf1f1b88c193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGamepad\libs\wgois\include">
+      <UniqueIdentifier>{c2c70c86-d6dd-4cb2-8fc2-0947717968c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGamepad\libs\wgois\include\win32">
+      <UniqueIdentifier>{c2954562-329b-4ac2-8ade-42928768596c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\src\ofxGamepad.h">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\src\ofxGamepadCamera.h">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\src\ofxGamepadConfigs.h">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\src\ofxGamepadHandler.h">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\src\ofxGamepadLinux.h">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\src\ofxGamepadOIS.h">
+      <Filter>addons\ofxGamepad\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OIS.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISConfig.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISEffect.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISEvents.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISException.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISFactoryCreator.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISForceFeedback.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISInputManager.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISInterface.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISJoyStick.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISKeyboard.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISMouse.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISMultiTouch.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISObject.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\OISPrereqs.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\win32\Win32ForceFeedback.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\win32\Win32InputManager.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\win32\Win32JoyStick.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\win32\Win32KeyBoard.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\win32\Win32Mouse.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGamepad\libs\wgois\include\win32\Win32Prereqs.h">
+      <Filter>addons\ofxGamepad\libs\wgois\include\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gamepadExampleApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
