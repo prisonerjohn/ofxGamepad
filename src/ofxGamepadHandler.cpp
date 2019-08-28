@@ -182,7 +182,7 @@ void ofxGamepadHandler::exit(ofEventArgs& arg) {
 }
 
 ofxGamepad* ofxGamepadHandler::getGamepad(int num) {
-	if(getNumPads()>0)
+	if(getNumPads()>num)
 		return gamepads[num].get();
 	ofLogWarning(__FUNCTION__) << "No gamepad connected! Gamepad is null.";
 	return NULL;
