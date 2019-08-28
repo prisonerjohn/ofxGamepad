@@ -23,6 +23,7 @@ ofxGamepadHandler::ofxGamepadHandler():hasHotplug(false),hotplugNext(0) {
 }
 
 ofxGamepadHandler::~ofxGamepadHandler() {
+	waitForThread();
 }
 
 ofxGamepadHandler& ofxGamepadHandler::get() {
