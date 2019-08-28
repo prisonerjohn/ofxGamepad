@@ -162,9 +162,10 @@ void ofxGamepadHandler::update() {
 
 void ofxGamepadHandler::draw(int x, int y) {
 	ofPushMatrix();
-	ofTranslate(x, y);
-	ofPoint offset(x, y);
+	{
+		ofTranslate(x, y);
 
+		auto offset = ofDefaultVec2(0.0f);
 		for (auto pad : gamepads)
 		{
 			pad->draw(offset.x, offset.y);

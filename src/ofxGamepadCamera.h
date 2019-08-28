@@ -11,7 +11,7 @@ public:
 	void setup();
 	void setGamepad(std::shared_ptr<ofxGamepad> pad);
 	void setInitialPosition(float x, float y, float z);
-	void setInitialPosition(ofVec3f pos);
+	void setInitialPosition(ofDefaultVec3 pos);
 	void reset();
 
 	float speedRotation;
@@ -21,7 +21,7 @@ private:
 	void update(ofEventArgs& e);
 	float lastTime;
 	std::shared_ptr<ofxGamepad> pad;
-	ofVec3f initialPosition;
+	ofDefaultVec3 initialPosition;
 };
 
 #endif // OFXGAMEPADCAMERA_H

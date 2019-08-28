@@ -59,14 +59,14 @@ void ofxGamepadCamera::setGamepad(std::shared_ptr<ofxGamepad> p) {
 }
 
 void ofxGamepadCamera::setInitialPosition(float x, float y, float z) {
-	setInitialPosition(ofVec3f(x, y, z));
+	setInitialPosition(ofDefaultVec3(x, y, z));
 }
 
-void ofxGamepadCamera::setInitialPosition(ofVec3f pos) {
+void ofxGamepadCamera::setInitialPosition(ofDefaultVec3 pos) {
 	initialPosition = pos;
 }
 
 void ofxGamepadCamera::reset() {
 	setPosition(initialPosition);
-	setOrientation(ofVec3f(0, 0, 0));
+	setOrientation(ofDefaultVec3(0, 0, 0));
 }
