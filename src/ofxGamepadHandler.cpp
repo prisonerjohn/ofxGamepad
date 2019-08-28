@@ -39,7 +39,7 @@ ofxGamepadHandler* ofxGamepadHandler::get() {
 void ofxGamepadHandler::enableHotplug(int interval) {
 	hasHotplug=true;
 	hotplugInterval=interval;
-	startThread(true);
+	startThread();
 }
 
 void ofxGamepadHandler::threadedFunction() {
